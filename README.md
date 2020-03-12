@@ -10,7 +10,6 @@ Exercise 2:
 
 ```bash
 $ git clone https://github.com/coniferous01/Arborian_Web_Scraper/
-$ pip install --ignore-installed -r requirements.txt
 python setup.py install
 ```
 
