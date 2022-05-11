@@ -43,6 +43,10 @@ def check_inventory(id_list):
     inventory_df.to_csv('Exercise2.csv', encoding='utf-8', index = False)
     return(print("Your product ID file is saved."))
 
+# TODO: accept array of brands (or single brand) for get_product_info()
+# TODO: add tests
+# TODO: change prints to logging
+# TODO: ability to run functions from the command line (with arguments)
 
 if __name__ == '__main__':
     get_product_info('Foo INC')
