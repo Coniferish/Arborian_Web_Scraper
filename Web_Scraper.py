@@ -24,21 +24,22 @@ def get_product_info(brand):
 
 
 # Exercise 2
-id_list = [296804,198765,750518,688028,127853,261549,382587,389471,251184,601484]
+id_list = [132602,296804,198765,189958,750518,688028,127853,261549,382587,389471,251184,601484]
 
 def check_inventory(id_list):
     """Check the inventory for a list of products"""
     inventory_df = pd.DataFrame() 
-    temp_df = product_df[['productId', 'inStock']]
-    temp_df = temp_df.astype({'productId': 'str'})
-    temp = []
+    in_stock_ids = product_df['productId'].values  # avoid having to catch a KeyError if item isn't in product_df
+
     for item in id_list:
-        item = str(item)
-        if item in temp_df['productId'].values:
-            temp.append(item)
-        else:
-            inventory_df = inventory_df.append({'productId': item, 'inStock': 0}, ignore_index = True)
-    inventory_df = pd.concat([inventory_df, temp_df.loc[temp_df['productId'].isin(temp)]], ignore_index=True, sort = False)
+        if item in in_stock_ids:
+            in_stock_item = product_df.loc[product_df['productId'] == item, ['productId', 'inStock']]
+            inventory_df = pd.concat([inventory_df, in_stock_item], ignore_index=True)
+        else: 
+            no_item = pd.DataFrame({'productId': [item], 'inStock': [0]})
+            inventory_df = pd.concat([inventory_df, no_item], ignore_index=True)
+    
+    # inventory_df = pd.concat([inventory_df, huh], ignore_index=True, sort = False)
     inventory_df.to_csv('Exercise2.csv', encoding='utf-8', index = False)
     return(print("Your product ID file is saved."))
 
