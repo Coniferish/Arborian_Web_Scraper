@@ -46,6 +46,7 @@ def check_inventory(id_list):
 # TODO: add tests
 # TODO: change prints to logging
 # TODO: ability to run functions from the command line (with arguments)
+# TODO: add timestamp for saving files
 
 if __name__ == '__main__':
     get_product_info('Foo INC')
