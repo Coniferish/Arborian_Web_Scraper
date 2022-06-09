@@ -62,11 +62,15 @@ def check_inventory(id_list):
         else:
             no_item = pd.DataFrame({"productId": [item], "inStock": [0]})
             inventory_df = pd.concat([inventory_df, no_item], ignore_index=True)
+    
+    inventory_df.to_csv("Exercise2.csv", encoding="utf-8", index = False)
+    return(print("Your product ID file is saved."))
 
-    # inventory_df = pd.concat([inventory_df, huh], ignore_index=True, sort = False)
-    inventory_df.to_csv("Exercise2.csv", encoding="utf-8", index=False)
-    return print("Your product ID file is saved.")
-
+# TODO: accept array of brands (or single brand) for get_product_info()
+# TODO: add tests
+# TODO: change prints to logging
+# TODO: ability to run functions from the command line (with arguments)
+# TODO: add timestamp for saving files
 
 if __name__ == "__main__":
     get_product_info("Foo INC")
